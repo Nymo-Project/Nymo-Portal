@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Secrets (шаблон .env.example комітиться)
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime / cache
+.npm
+.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors (локальні налаштування; спільні rules можна тримати в репо окремо)
+.idea/
+*.swp
+*.swo
+*~
+
+# Optional: розкоментуй, якщо не хочеш комітити локальні налаштування VS Code/Cursor
+# .vscode/
+# .cursor/

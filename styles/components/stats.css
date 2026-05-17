@@ -1,0 +1,252 @@
+.section-root {
+  width: 100%;
+  min-width: 0;
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.stats-grid-wrap {
+  margin-bottom: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.stats-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stats-grid--two > .stat-card:only-child {
+  grid-column: 1 / -1;
+}
+
+.stats-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--stat-card-shadow);
+}
+
+.stat-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+  height: 36px;
+  min-height: 36px;
+  color: var(--text-muted);
+}
+
+.stat-card__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: block;
+  overflow: visible;
+}
+
+.stat-card__label {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-card__label-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.22em;
+  row-gap: 6px;
+  margin: 0 0 10px;
+}
+
+.stat-card__label-row .stat-card__label {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.stat-card__dropdown--placeholder {
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stat-card__value {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card__dropdown {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0;
+  min-width: 0;
+}
+
+.stat-card__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12em;
+  margin: 0;
+  padding: 0 1px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  cursor: pointer;
+  outline: none;
+  max-width: min(100%, 13rem);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.stat-card__dropdown-trigger:hover {
+  color: var(--text-muted);
+  background-color: color-mix(in srgb, var(--text-muted) 14%, transparent);
+}
+
+.stat-card__dropdown-trigger:focus-visible {
+  color: var(--text);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--text-muted) 35%, transparent);
+}
+
+.stat-card__dropdown-value {
+  min-width: 0;
+  text-align: left;
+  line-height: inherit;
+}
+
+.stat-card__dropdown-chevron {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  opacity: 0.92;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.stat-card__dropdown-trigger:hover .stat-card__dropdown-chevron {
+  opacity: 1;
+}
+
+.stat-card__dropdown.is-open .stat-card__dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.stat-card__dropdown-chevron-svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.stat-card__dropdown-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 40;
+  min-width: max(100%, 11rem);
+  padding: 5px;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--text-muted) 22%, var(--border));
+  border-radius: 11px;
+  box-shadow:
+    var(--stat-card-shadow),
+    0 0 0 1px color-mix(in srgb, var(--text-muted) 6%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+body[data-theme="light"] .stat-card__dropdown-panel {
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--text) 12%, var(--border));
+  box-shadow:
+    var(--stat-card-shadow),
+    0 0 0 1px color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.stat-card__dropdown-panel[hidden] {
+  display: none !important;
+}
+
+.stat-card__dropdown-option {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 9px 11px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.stat-card__dropdown-option:hover {
+  background: color-mix(in srgb, var(--text-muted) 14%, var(--surface));
+  color: var(--text);
+}
+
+.stat-card__dropdown-option.is-selected {
+  background: color-mix(in srgb, var(--text-muted) 18%, var(--surface-2));
+  color: var(--text);
+  font-weight: 600;
+}
+
+.stat-card__dropdown-option:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--text-muted) 40%, var(--border));
+  outline-offset: -2px;
+}
+
+.stat-card__hint {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}

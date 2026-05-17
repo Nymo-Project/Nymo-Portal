@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 3,
+  "items": [
+    {
+      "id": "rpt-2026-016",
+      "status": "new",
+      "text": "Не можу ввійти в акаунт, постійно видає помилку авторизації після вводу пароля.",
+      "createdAt": "2026-05-16T08:10:00.000Z",
+      "updatedAt": "2026-05-16T08:10:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user001",
+        "phone": "+380970000001"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-017",
+      "status": "new",
+      "text": "Не приходять push-сповіщення про нові повідомлення на iOS, поки не відкрию додаток.",
+      "createdAt": "2026-05-16T08:25:00.000Z",
+      "updatedAt": "2026-05-16T08:25:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user002",
+        "phone": "+380970000002"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-018",
+      "status": "new",
+      "text": "Які дозволи потрібно увімкнути для нормальної роботи камери? Додаток не бачить мікрофон.",
+      "createdAt": "2026-05-16T09:00:00.000Z",
+      "updatedAt": "2026-05-16T09:00:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user003",
+        "phone": "+380970000003"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-019",
+      "status": "new",
+      "text": "Код підтвердження не приходить через SMS вже більше години.",
+      "createdAt": "2026-05-16T09:15:00.000Z",
+      "updatedAt": "2026-05-16T09:15:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user004",
+        "phone": "+380970000004"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-020",
+      "status": "new",
+      "text": "Не доставляються повідомлення адресату, висить статус 'Відправляється' при стабільному інтернеті.",
+      "createdAt": "2026-05-16T09:30:00.000Z",
+      "updatedAt": "2026-05-16T09:30:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user005",
+        "phone": "+380970000005"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-021",
+      "status": "new",
+      "text": "Як змінити ім’я або аватар? Кнопка редагування профілю неактивна.",
+      "createdAt": "2026-05-16T10:05:00.000Z",
+      "updatedAt": "2026-05-16T10:05:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user006",
+        "phone": "+380970000006"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-022",
+      "status": "new",
+      "text": "Додаток вилітає при спробі завантажити фотографію розміром більше 5 МБ у чат.",
+      "createdAt": "2026-05-16T10:20:00.000Z",
+      "updatedAt": "2026-05-16T10:20:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user007",
+        "phone": null
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-023",
+      "status": "new",
+      "text": "Код підтвердження не приходить на Email. В папці Спам також перевіряв.",
+      "createdAt": "2026-05-16T10:45:00.000Z",
+      "updatedAt": "2026-05-16T10:45:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user008",
+        "phone": "+380970000008"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-024",
+      "status": "new",
+      "text": "Постійно розривається з'єднання під час аудіодзвінка, пише про втрату мережі.",
+      "createdAt": "2026-05-16T11:10:00.000Z",
+      "updatedAt": "2026-05-16T11:10:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user009",
+        "phone": "+380970000009"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-025",
+      "status": "new",
+      "text": "Не працює посилання для відновлення пароля, видає помилку 404.",
+      "createdAt": "2026-05-16T11:30:00.000Z",
+      "updatedAt": "2026-05-16T11:30:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user010",
+        "phone": "+380970000010"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-026",
+      "status": "new",
+      "text": "Мої повідомлення чомусь дублюються двічі після натискання кнопки 'Відправити'.",
+      "createdAt": "2026-05-16T12:00:00.000Z",
+      "updatedAt": "2026-05-16T12:00:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user011",
+        "phone": "+380970000011"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-027",
+      "status": "new",
+      "text": "Після перевстановлення додатка не завантажилася історія чатів за минулий місяць.",
+      "createdAt": "2026-05-16T12:15:00.000Z",
+      "updatedAt": "2026-05-16T12:15:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user012",
+        "phone": "+380970000012"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-028",
+      "status": "new",
+      "text": "Проблема зі статусом мережі: показує, що співрозмовник 'В мережі', хоча він офлайн.",
+      "createdAt": "2026-05-16T12:45:00.000Z",
+      "updatedAt": "2026-05-16T12:45:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user013",
+        "phone": null
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-029",
+      "status": "new",
+      "text": "Не завантажуються стікери та GIF-анімації, замість них просто білі квадрати.",
+      "createdAt": "2026-05-16T13:20:00.000Z",
+      "updatedAt": "2026-05-16T13:20:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user014",
+        "phone": "+380970000014"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-030",
+      "status": "new",
+      "text": "Як видалити свій акаунт повністю з бази даних? Кнопка 'Видалити' видає помилку бази.",
+      "createdAt": "2026-05-16T13:50:00.000Z",
+      "updatedAt": "2026-05-16T13:50:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user015",
+        "phone": "+380970000015"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-031",
+      "status": "new",
+      "text": "Екран стає чорним під час спроби записати голосове повідомлення.",
+      "createdAt": "2026-05-16T14:10:00.000Z",
+      "updatedAt": "2026-05-16T14:10:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user016",
+        "phone": "+380970000016"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-032",
+      "status": "new",
+      "text": "Внутрішня помилка сервера (Error 500) при спробі оновити список контактів.",
+      "createdAt": "2026-05-16T14:35:00.000Z",
+      "updatedAt": "2026-05-16T14:35:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user017",
+        "phone": "+380970000017"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-033",
+      "status": "new",
+      "text": "Не можу додати нового користувача за номером телефону, додаток зависає на пошуку.",
+      "createdAt": "2026-05-16T15:00:00.000Z",
+      "updatedAt": "2026-05-16T15:00:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user018",
+        "phone": null
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-034",
+      "status": "new",
+      "text": "Сповіщення приходять без звуку, хоча в налаштуваннях профілю звук увімкнено.",
+      "createdAt": "2026-05-16T15:45:00.000Z",
+      "updatedAt": "2026-05-16T15:45:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user019",
+        "phone": "+380970000019"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-035",
+      "status": "new",
+      "text": "Чат не синхронізується між телефоном та веб-версією, повідомлення з'являються з затримкою.",
+      "createdAt": "2026-05-16T16:15:00.000Z",
+      "updatedAt": "2026-05-16T16:15:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user020",
+        "phone": "+380970000020"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-036",
+      "status": "new",
+      "text": "При зміні теми на темну текст у налаштуваннях залишається чорним і стає нечитабельним.",
+      "createdAt": "2026-05-16T16:40:00.000Z",
+      "updatedAt": "2026-05-16T16:40:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user021",
+        "phone": "+380970000021"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-037",
+      "status": "new",
+      "text": "Пише, що мій IP заблоковано через підозрілу активність, але я нічого не робив.",
+      "createdAt": "2026-05-16T17:05:00.000Z",
+      "updatedAt": "2026-05-16T17:05:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user022",
+        "phone": "+380970000022"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-038",
+      "status": "new",
+      "text": "Не можу скопіювати текст вхідного повідомлення: при довгому натисканні нічого не відбувається.",
+      "createdAt": "2026-05-16T17:25:00.000Z",
+      "updatedAt": "2026-05-16T17:25:00.000Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user023",
+        "phone": "+380970000023"
+      },
+      "adminReply": "",
+      "adminReplyAt": null
+    },
+    {
+      "id": "rpt-2026-039",
+      "status": "processed",
+      "text": "Пристрій сильно гріється, а батарея сідає втричі швидше при активному використанні вашого застосунку.",
+      "createdAt": "2026-05-16T18:10:00.000Z",
+      "updatedAt": "2026-05-17T16:36:18.862Z",
+      "processedAt": "2026-05-17T16:36:18.862Z",
+      "reporter": {
+        "name": "user024",
+        "phone": "+380970000024"
+      },
+      "adminReply": "Тестова відповідь ....",
+      "adminReplyAt": "2026-05-17T16:36:18.862Z"
+    },
+    {
+      "id": "rpt-2026-040",
+      "status": "in_progress",
+      "text": "Помилка при спробі прив'язати новий номер телефону до існуючого профілю.",
+      "createdAt": "2026-05-16T18:50:00.000Z",
+      "updatedAt": "2026-05-17T16:35:40.409Z",
+      "processedAt": null,
+      "reporter": {
+        "name": "user025",
+        "phone": "+380970000025"
+      },
+      "adminReply": "Тестова відповідь 1..2..3",
+      "adminReplyAt": "2026-05-17T16:35:40.409Z"
+    }
+  ]
+}

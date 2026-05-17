@@ -1,0 +1,19 @@
+.profile-loading {
+  padding: 16px 8px;
+  color: var(--text-muted);
+}
+
+.users-fetch-error {
+  margin: 0 0 8px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border));
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+  color: var(--text);
+}
+
+.users-fetch-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

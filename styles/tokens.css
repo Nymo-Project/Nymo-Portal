@@ -1,0 +1,37 @@
+:root {
+  --shell-header-h: 4.25rem;
+  /* Темна тема: мінімалістичний дашборд (орієнтир Stripe / Vercel) */
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1a1a1a;
+  --surface-hover: #1a1a1a;
+  --text: rgba(255, 255, 255, 0.88);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --accent: #177245;
+  --accent-contrast: #ffffff;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --radius: 8px;
+  --table-cell-pad-x: 20px;
+  --table-cell-pad-y: 16px;
+  --stat-card-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+body[data-theme="light"] {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --surface-2: #f9fafb;
+  /* Інакше наслідуються з :root (#1a1a1a) — hover рядка таблиці ламає контраст */
+  --surface-hover: #f3f4f6;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --border: #e5e7eb;
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --accent: #177245;
+  --accent-contrast: #ffffff;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --stat-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}

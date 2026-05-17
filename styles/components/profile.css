@@ -1,0 +1,139 @@
+/* Ті самі фон/рамка/тінь, що й .stat-card на головній */
+.profile-section {
+  border-radius: 12px;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--stat-card-shadow);
+  overflow: hidden;
+}
+
+.profile-section + .profile-section {
+  margin-top: 16px;
+}
+
+/* Як .stat-card__label */
+.profile-section-title {
+  margin: 0;
+  padding: 16px 18px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.profile-user {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0 18px 16px;
+}
+
+.profile-field-list {
+  min-width: 0;
+}
+
+.profile-user-info {
+  flex: 1;
+}
+
+.profile-field-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(88px, 0.8fr) minmax(0, 1.2fr);
+  gap: 14px;
+  padding: 11px 18px;
+}
+
+.profile-user-info .profile-field-row {
+  padding-inline: 0;
+}
+
+.profile-field-row::after,
+.profile-list-item::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.profile-user-info .profile-field-row::after {
+  left: 0;
+  right: 0;
+}
+
+.profile-field-row:last-child::after,
+.profile-list-item:last-child::after {
+  display: none;
+}
+
+.profile-field-label {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.profile-field-value {
+  min-width: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 550;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.profile-field-value--datetime {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  font-variant-numeric: tabular-nums;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px var(--border);
+  color: var(--text);
+}
+
+.profile-avatar--image {
+  object-fit: cover;
+}
+
+.profile-balance {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.profile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.profile-list-item {
+  position: relative;
+  padding: 12px 18px;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.profile-list-item--empty {
+  color: var(--text-muted);
+}

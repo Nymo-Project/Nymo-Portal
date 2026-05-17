@@ -1,0 +1,153 @@
+.filter-field {
+  display: grid;
+  gap: 7px;
+  min-width: min(9.5rem, 100%);
+}
+
+.filter-field__label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-field__select {
+  width: 100%;
+  min-width: 9rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 32px 10px 12px;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-field__select:hover {
+  border-color: color-mix(in srgb, var(--text-muted) 28%, var(--border));
+}
+
+.filter-field__select:focus-visible {
+  border-color: color-mix(in srgb, var(--text) 22%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.users-sort-control {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.users-sort-dropdown {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: min(11.5rem, 42vw);
+}
+
+.users-sort-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-width: 9rem;
+  margin: 0;
+  padding: 10px 10px 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1.35;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.users-sort-dropdown__trigger:hover {
+  border-color: color-mix(in srgb, var(--text-muted) 28%, var(--border));
+}
+
+.users-sort-dropdown__trigger:focus-visible {
+  border-color: color-mix(in srgb, var(--text) 22%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.users-sort-dropdown__value {
+  min-width: 0;
+  text-align: left;
+}
+
+.users-sort-dropdown .stat-card__dropdown-chevron {
+  opacity: 0.85;
+}
+
+.users-sort-dropdown.is-open .stat-card__dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.users-sort-dropdown .stat-card__dropdown-panel {
+  left: 0;
+  right: auto;
+  min-width: 100%;
+}
+
+.users-sort-dir-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.users-sort-dir-btn__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.users-sort-dir-btn:hover {
+  border-color: color-mix(in srgb, var(--text-muted) 28%, var(--border));
+  background: var(--surface-hover, color-mix(in srgb, var(--surface-2) 88%, var(--text)));
+}
+
+.users-sort-dir-btn:focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--text) 22%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.users-sort-dir-btn:active {
+  transform: scale(0.97);
+}

@@ -1,0 +1,395 @@
+/* ——— Публічна сторінка /login (узгоджено з панеллю) ——— */
+body.login-page {
+  overflow: auto;
+  min-height: 100vh;
+  height: auto;
+}
+
+.login-shell {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 5vh, 56px) 18px;
+  background: var(--bg);
+}
+
+.login-top-actions {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.login-info-dropdown {
+  position: relative;
+}
+
+.login-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  list-style: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-info-btn::-webkit-details-marker {
+  display: none;
+}
+
+.login-info-btn::marker {
+  content: "";
+}
+
+.login-info-btn:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-2) 88%, var(--text));
+  border-color: color-mix(in srgb, var(--text) 16%, var(--border));
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.login-info-btn:active {
+  transform: scale(0.94);
+}
+
+.login-info-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--text) 32%, var(--border));
+  outline-offset: 2px;
+}
+
+.login-info-dropdown[open] .login-info-btn {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 24%, var(--border));
+}
+
+.login-info-btn__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+}
+
+.login-info-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  left: auto;
+  width: min(300px, calc(100vw - 36px));
+  padding: 14px 16px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--stat-card-shadow);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text);
+  z-index: 20;
+}
+
+.login-info-panel p {
+  margin: 0 0 10px;
+}
+
+.login-info-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.login-info-panel__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.login-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: clamp(12px, 2.4vh, 26px);
+}
+
+@keyframes login-logo-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.025);
+  }
+}
+
+@keyframes login-logo-shimmer {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+
+@keyframes login-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes login-submit-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 1px 2px color-mix(in srgb, var(--text) 4%, transparent),
+      0 0 0 0 color-mix(in srgb, var(--text) 0%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 4px 14px color-mix(in srgb, var(--text) 7%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--border) 80%, transparent);
+  }
+}
+
+.login-logo {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.36em;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login-logo {
+    animation: login-logo-float 5.5s ease-in-out infinite;
+  }
+
+  .login-logo__panel {
+    animation: login-logo-shimmer 4s ease-in-out infinite;
+  }
+}
+
+.login-logo__nymo {
+  font-size: clamp(2.85rem, 11vw, 4.85rem);
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  color: var(--text);
+}
+
+.login-logo__panel {
+  font-size: clamp(2.05rem, 7.5vw, 3.45rem);
+  font-weight: 300;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  animation: login-card-enter 0.52s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-logo,
+  .login-logo__panel,
+  .login-card,
+  .login-submit {
+    animation: none !important;
+  }
+}
+
+.login-field {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.login-field:last-of-type {
+  margin-bottom: 18px;
+}
+
+.login-field__label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.login-field__input {
+  width: 100%;
+  border: 1px solid transparent;
+  background: color-mix(in srgb, var(--surface-2) 88%, var(--bg));
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 0.94rem;
+  outline: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+body[data-theme="light"] .login-field__input {
+  background: color-mix(in srgb, #ffffff 55%, var(--bg));
+}
+
+.login-field__input::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 75%, transparent);
+}
+
+.login-field__input:focus {
+  border-color: color-mix(in srgb, var(--text) 22%, var(--border));
+  background: var(--surface-2);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 9%, transparent);
+}
+
+.login-card__err {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border));
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+  color: var(--text);
+}
+
+.login-submit {
+  position: relative;
+  width: 100%;
+  margin-top: 2px;
+  padding: 13px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface-2) 90%, var(--bg));
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.28s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login-submit {
+    animation: login-submit-glow 4s ease-in-out infinite;
+  }
+}
+
+.login-submit:hover {
+  animation: none;
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--text) 16%, var(--border));
+  background: color-mix(in srgb, var(--surface) 42%, var(--surface-2));
+  box-shadow:
+    0 12px 36px color-mix(in srgb, var(--text) 10%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--text) 6%, var(--border));
+}
+
+.login-submit:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 0.12s;
+}
+
+.login-submit:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--text) 28%, var(--border));
+  outline-offset: 3px;
+}
+
+/* Сторінка входу — ті самі діапазони ширини в’юпорту */
+@media (min-width: 1200px) {
+  body.login-page .login-card {
+    max-width: 420px;
+  }
+
+  body.login-page .login-shell {
+    padding: clamp(32px, 5vh, 64px) 24px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  body.login-page .login-card {
+    max-width: 400px;
+  }
+
+  body.login-page .login-shell {
+    padding: clamp(26px, 4.8vh, 52px) 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  body.login-page .login-shell {
+    padding: clamp(24px, 4.5vh, 48px) 20px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  body.login-page .login-shell {
+    padding: 24px 16px 40px;
+  }
+
+  body.login-page .login-top-actions {
+    top: 14px;
+    right: 14px;
+  }
+}
+
+@media (max-width: 575px) {
+  body.login-page .login-shell {
+    padding: 68px 14px 28px;
+    justify-content: flex-start;
+  }
+
+  body.login-page .login-top-actions {
+    top: 12px;
+    right: 12px;
+  }
+
+  body.login-page .login-card {
+    max-width: 100%;
+  }
+
+  body.login-page .login-field__input,
+  body.login-page .login-submit {
+    font-size: 16px;
+  }
+}
