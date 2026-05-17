@@ -13,6 +13,21 @@
   border-spacing: 0;
 }
 
+/* Горизонтальний скрол таблиці, якщо сітка ширша за в’юпорт (мобільний режим) */
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 100%;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.table-scroll table {
+  width: max-content;
+  min-width: 100%;
+}
+
 .table-wrap thead th {
   padding: var(--table-cell-pad-y) var(--table-cell-pad-x);
   font-size: 0.75rem;

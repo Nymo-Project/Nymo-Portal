@@ -275,17 +275,19 @@
         )}
         <div class="table-wrap table-wrap--users table-wrap--reports">
           ${getReportsToolbarMarkup()}
-          <table class="users-table reports-table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Дата</th>
-                <th scope="col">Скаржник</th>
-                <th scope="col">Статус</th>
-              </tr>
-            </thead>
-            <tbody>${rowsHtml}${emptyRow}</tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="users-table reports-table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Дата</th>
+                  <th scope="col">Скаржник</th>
+                  <th scope="col">Статус</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}${emptyRow}</tbody>
+            </table>
+          </div>
           ${getPaginationMarkup()}
         </div>
       </div>

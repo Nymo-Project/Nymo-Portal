@@ -286,18 +286,20 @@
         )}
         <div class="table-wrap table-wrap--users">
           ${getUsersToolbarMarkup()}
-          <table class="users-table">
-            <thead>
-              <tr>
-                <th class="users-table__th-num" scope="col">№</th>
-                <th class="users-table__th-avatar" scope="col" aria-label="Аватар"></th>
-                <th scope="col">Користувач</th>
-                <th scope="col">Телефон</th>
-                <th scope="col">Був у мережі</th>
-              </tr>
-            </thead>
-            <tbody>${rowsHtml}${emptyRow}</tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th class="users-table__th-num" scope="col">№</th>
+                  <th class="users-table__th-avatar" scope="col" aria-label="Аватар"></th>
+                  <th scope="col">Користувач</th>
+                  <th scope="col">Телефон</th>
+                  <th scope="col">Був у мережі</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}${emptyRow}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     `;
