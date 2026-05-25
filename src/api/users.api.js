@@ -7,9 +7,7 @@
   /** Кеш останнього успішного списку (для профілю без зайвого GET /users). */
   let lastUsersById = new Map();
   let lastUsersList = [];
-  /** Коротке дедупування послідовних викликів (наприклад хедер + таблиця при init). */
-  let lastUsersSuccessAt = 0;
-  const USERS_CACHE_TTL_MS = 3000;
+  let usersFetchInFlight = null;
 
   function getBaseUrl() {
     const { CHAT_APP_API_BASE_URL, USE_API_PROXY } = App.utils.constants;
@@ -111,7 +109,6 @@
   function removeCachedUser(userId) {
     lastUsersList = lastUsersList.filter((u) => u.id !== userId);
     lastUsersById.delete(userId);
-    lastUsersSuccessAt = Date.now();
   }
 
   async function parseResponse(res) {
@@ -146,19 +143,11 @@
     removeCachedUser(userId);
   }
 
-  async function apiGetUsers() {
-    const now = Date.now();
-    if (lastUsersList.length && now - lastUsersSuccessAt < USERS_CACHE_TTL_MS) {
-      return lastUsersList.slice();
-    }
-
+  async function fetchUsersFromNetwork() {
     let body;
     try {
       body = await fetchJson("/users");
     } catch (error) {
-      lastUsersList = [];
-      lastUsersById = new Map();
-      lastUsersSuccessAt = 0;
       throw error;
     }
 
@@ -168,8 +157,35 @@
 
     lastUsersList = rows;
     lastUsersById = new Map(rows.map((r) => [r.id, r]));
-    lastUsersSuccessAt = Date.now();
     return rows;
+  }
+
+  /** force: true — новий GET /users; false — повернути кеш сесії без мережі. */
+  async function apiGetUsers(options = {}) {
+    const force = options.force === true;
+    if (!force && lastUsersList.length) {
+      return lastUsersList.slice();
+    }
+
+    if (usersFetchInFlight) {
+      const rows = await usersFetchInFlight;
+      return rows.slice();
+    }
+
+    usersFetchInFlight = fetchUsersFromNetwork().finally(() => {
+      usersFetchInFlight = null;
+    });
+
+    try {
+      const rows = await usersFetchInFlight;
+      return rows.slice();
+    } catch (error) {
+      if (force) {
+        lastUsersList = [];
+        lastUsersById = new Map();
+      }
+      throw error;
+    }
   }
 
   function buildProfileFromRow(row) {

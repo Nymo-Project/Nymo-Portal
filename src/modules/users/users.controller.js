@@ -43,6 +43,40 @@
   }
 
   let isUsersDelegationInitialized = false;
+  let usersLoadPromise = null;
+
+  const USERS_RETRY_DELAYS_MS = [1000, 2000, 4000];
+
+  function isRateLimitError(error) {
+    const msg = error instanceof Error ? error.message : String(error);
+    return /\b429\b|rate\s*limit|too many requests/i.test(msg);
+  }
+
+  function delay(ms) {
+    return new Promise((resolve) => {
+      global.setTimeout(resolve, ms);
+    });
+  }
+
+  async function fetchUsersWithRetry(forceRefresh) {
+    let lastError = null;
+    const maxAttempts = USERS_RETRY_DELAYS_MS.length + 1;
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      try {
+        return await App.api.users.apiGetUsers({ force: forceRefresh || attempt > 0 });
+      } catch (error) {
+        lastError = error;
+        const canRetry = isRateLimitError(error) && attempt < USERS_RETRY_DELAYS_MS.length;
+        if (!canRetry) throw error;
+        await delay(USERS_RETRY_DELAYS_MS[attempt]);
+      }
+    }
+    throw lastError;
+  }
+
+  function showUsersLoadError(tableWrap, message) {
+    tableWrap.innerHTML = renderUsersFetchErrorMarkup(message);
+  }
 
   function initUsersRowOpenDelegation() {
     if (isUsersDelegationInitialized) return;
@@ -90,6 +124,14 @@
     });
 
     tableWrap.addEventListener("click", (event) => {
+      const refreshBtn = event.target.closest("[data-users-refresh]");
+      if (refreshBtn) {
+        event.preventDefault();
+        if (refreshBtn.disabled || usersState.isRefreshing) return;
+        void refreshUsersTable();
+        return;
+      }
+
       const sortDirToggle = event.target.closest("[data-users-sort-dir-toggle]");
       if (sortDirToggle) {
         event.preventDefault();
@@ -173,20 +215,83 @@
     isUsersDelegationInitialized = true;
   }
 
-  async function renderUsersTable() {
+  async function loadUsersData(forceRefresh) {
+    usersState.isRefreshing = true;
+    try {
+      const rows = await fetchUsersWithRetry(forceRefresh);
+      usersState.users = rows;
+      usersState.loadError = null;
+      usersState.usersLoaded = true;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      usersState.loadError = message;
+      usersState.usersLoaded = true;
+      if (!usersState.users.length) usersState.users = [];
+      throw error;
+    } finally {
+      usersState.isRefreshing = false;
+    }
+  }
+
+  async function renderUsersTable(options = {}) {
+    const forceRefresh = options.forceRefresh === true;
     const tableWrap = App.core.dom.tableWrap;
     if (!tableWrap) return;
     initUsersRowOpenDelegation();
-    tableWrap.textContent = "Завантаження даних...";
-    try {
-      usersState.users = await App.api.users.apiGetUsers();
-    } catch (error) {
-      usersState.users = [];
-      const message = error instanceof Error ? error.message : String(error);
-      tableWrap.innerHTML = renderUsersFetchErrorMarkup(message);
+
+    if (!forceRefresh && usersState.usersLoaded) {
+      if (usersState.loadError && !usersState.users.length) {
+        showUsersLoadError(tableWrap, usersState.loadError);
+      } else {
+        renderUsersView();
+      }
       return;
     }
-    renderUsersView();
+
+    if (usersLoadPromise && !forceRefresh) {
+      if (!usersState.users.length) tableWrap.textContent = "Завантаження даних...";
+      try {
+        await usersLoadPromise;
+        if (usersState.loadError && !usersState.users.length) {
+          showUsersLoadError(tableWrap, usersState.loadError);
+        } else {
+          renderUsersView();
+        }
+      } catch {
+        /* помилку вже записано в usersState */
+      }
+      return;
+    }
+
+    const keepTableVisible = forceRefresh && usersState.users.length > 0;
+    if (!keepTableVisible) {
+      tableWrap.textContent = "Завантаження даних...";
+    } else {
+      renderUsersView();
+    }
+
+    const loadTask = loadUsersData(forceRefresh)
+      .then(() => {
+        renderUsersView();
+      })
+      .catch((error) => {
+        const message = error instanceof Error ? error.message : String(error);
+        if (!usersState.users.length) {
+          showUsersLoadError(tableWrap, message);
+          return;
+        }
+        global.alert(`Не вдалося оновити список: ${message}`);
+        renderUsersView();
+      });
+
+    usersLoadPromise = loadTask.finally(() => {
+      usersLoadPromise = null;
+    });
+    await usersLoadPromise;
+  }
+
+  async function refreshUsersTable() {
+    return renderUsersTable({ forceRefresh: true });
   }
 
   function renderUsersView(options = {}) {
@@ -211,5 +316,10 @@
     }
   }
 
-  App.controllers.users = { renderUsersTable, renderUsersView, closeAllUsersToolbarDropdowns };
+  App.controllers.users = {
+    renderUsersTable,
+    refreshUsersTable,
+    renderUsersView,
+    closeAllUsersToolbarDropdowns,
+  };
 })(window);

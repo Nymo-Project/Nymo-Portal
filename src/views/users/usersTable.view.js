@@ -186,6 +186,18 @@
     }).join("");
   }
 
+  function getUsersRefreshButtonMarkup() {
+    const busy = usersState.isRefreshing;
+    const disabledAttr = busy ? " disabled" : "";
+    const busyAttr = busy ? ' aria-busy="true"' : "";
+    return `<button
+      type="button"
+      class="users-refresh-btn"
+      data-users-refresh
+      aria-label="Оновити список користувачів"${disabledAttr}${busyAttr}
+    >${busy ? "Оновлення…" : "Оновити"}</button>`;
+  }
+
   function getUsersToolbarMarkup() {
     const { query, tableRegisteredWithinDays, sortBy, sortDir } = usersState;
     const regDays =
@@ -215,6 +227,7 @@
             <div class="users-toolbar__sort-row">
               ${getSortByDropdownMarkup(sortBy)}
               ${getSortDirToggleMarkup(sortDir)}
+              ${getUsersRefreshButtonMarkup()}
             </div>
           </div>
         </div>
@@ -307,9 +320,16 @@
 
 
   function renderUsersFetchErrorMarkup(message) {
-    return `<div class="section-stack"><p class="users-fetch-error" role="alert">Не вдалося завантажити користувачів: ${escapeAttribute(
-      message
-    )}</p><p class="users-fetch-hint">Якщо це CORS: з кореня проєкту виконай npm install і npm run dev, відкрий панель з http://127.0.0.1:8787/ (не Live Server). Або вимкни USE_API_PROXY у src/utils/constants.js, якщо бекенд дозволив твій origin.</p></div>`;
+    const isRateLimit = /\b429\b|rate\s*limit|too many requests/i.test(String(message));
+    const rateHint = isRateLimit
+      ? '<p class="users-fetch-hint">Занадто багато запитів до API. Зачекай кілька секунд і натисни «Оновити».</p>'
+      : "";
+    return `<div class="section-stack users-fetch-error-panel">
+      <p class="users-fetch-error" role="alert">Не вдалося завантажити користувачів: ${escapeAttribute(message)}</p>
+      ${rateHint}
+      <p class="users-fetch-hint">Якщо це CORS: з кореня проєкту виконай npm install і npm run dev, відкрий панель з http://127.0.0.1:8787/ (не Live Server). Або вимкни USE_API_PROXY у src/utils/constants.js, якщо бекенд дозволив твій origin.</p>
+      ${getUsersRefreshButtonMarkup()}
+    </div>`;
   }
 
   App.views.users.table = {

@@ -14,6 +14,9 @@
   const usersState = {
     query: "",
     users: [],
+    usersLoaded: false,
+    loadError: null,
+    isRefreshing: false,
     onlineWithinDays: 7,
     registeredWithinDays: 7,
     tableRegisteredWithinDays: 0,

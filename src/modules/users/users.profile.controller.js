@@ -58,7 +58,7 @@
         try {
           await App.api.users.apiDeleteUser(userId);
           closeUserProfileModal();
-          void App.modules.usersTable.renderUsersTable();
+          void App.modules.usersTable.refreshUsersTable();
         } catch (err) {
           const msg = err instanceof Error ? err.message : String(err);
           global.alert(`Не вдалося видалити: ${msg}`);
